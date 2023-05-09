@@ -1,11 +1,12 @@
 const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '1879196cb0msha21c9c10f0a5493p1552e0jsne5aa2c930959',
+      'X-RapidAPI-Key': 'e07d04eeb2mshbe2311831234655p16170bjsna20a4ffbca53',
       'X-RapidAPI-Host': 'yahoo-weather5.p.rapidapi.com'
     }
   };
   
+
   
 const getWeather = (City) =>{
     askedCity.innerHTML = City.charAt(0).toUpperCase() + City.slice(1)
@@ -14,18 +15,16 @@ const getWeather = (City) =>{
     .then(response => response.json())
     .then(response => {
         
-        //temperature
+        console.log(response);
         document.getElementById('temp').innerHTML = response.current_observation.condition.temperature
         document.getElementById('weather-condition').innerHTML = response.current_observation.condition.text
         sunrise.innerHTML = response.current_observation.astronomy.sunrise
         sunset.innerHTML = response.current_observation.astronomy.sunset
 
-        //humidity
         humidity.innerHTML = response.current_observation.atmosphere.humidity
         visibility.innerHTML = response.current_observation.atmosphere.visibility
         pressure.innerHTML = response.current_observation.atmosphere.pressure
 
-        //wind
         wind_speed.innerHTML = response.current_observation.wind.speed
         wind_direction.innerHTML = response.current_observation.wind.direction
         wind_chill.innerHTML = response.current_observation.wind.chill
@@ -41,7 +40,9 @@ mybuton.addEventListener("click", (e)=>{
     getWeather(city_name.value)
 })
 
+
 getWeather("Delhi")
+
 
 const otherCityWeather = (myCity, classname) =>{
 
@@ -49,9 +50,11 @@ const otherCityWeather = (myCity, classname) =>{
     .then(response => response.json())
     .then(response => {
         
+
         document.querySelectorAll("."+classname)[0].innerHTML = response.current_observation.condition.temperature
         
         document.querySelectorAll("."+classname)[1].innerHTML = response.current_observation.wind.speed
+       
         
         document.querySelectorAll("."+classname)[2].innerHTML = response.current_observation.atmosphere.visibility
         
