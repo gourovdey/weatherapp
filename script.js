@@ -15,7 +15,6 @@ const getWeather = (City) =>{
     .then(response => response.json())
     .then(response => {
         
-        console.log(response);
         document.getElementById('temp').innerHTML = response.current_observation.condition.temperature
         document.getElementById('weather-condition').innerHTML = response.current_observation.condition.text
         sunrise.innerHTML = response.current_observation.astronomy.sunrise
